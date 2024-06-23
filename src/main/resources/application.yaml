@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: audit-transaction-service
+  jackson:
+    default-property-inclusion: NON_NULL
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: root
+      password: example
+      database: auditdb
+  kafka:
+    bootstrap-servers: localhost:9092
+
+
+logging:
+  file:
+    name: logs/audit-transaction-service.log
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+server:
+  port: 8002
